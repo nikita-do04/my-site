@@ -184,7 +184,7 @@
   .name{
     font-family:'Cormorant Garamond', serif;
     font-weight:500;
-    font-size: clamp(2.6rem, 9vw, 5.5rem);
+    font-size: clamp(2.3rem, 12vw, 5.5rem);
     letter-spacing: 0.04em;
     display:flex;
     gap:0.02em;
@@ -195,6 +195,7 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    -webkit-text-fill-color: transparent;
     animation: shimmer 5s ease-in-out infinite 3.2s;
   }
 
@@ -210,12 +211,13 @@
   }
 
   .heartline{
-    margin-top: 22px;
-    font-size: clamp(0.75rem, 2vw, 0.85rem);
-    letter-spacing: 0.3em;
+    margin-top: 18px;
+    font-size: clamp(0.68rem, 3.4vw, 0.85rem);
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--gold);
     opacity:0;
+    white-space: nowrap;
     animation: fadeUp 1.2s ease-out forwards;
     animation-delay: 2.4s;
   }
@@ -224,12 +226,11 @@
     position:absolute;
     bottom: calc(28px + env(safe-area-inset-bottom, 0px));
     left:50%;
-    transform: translateX(-50%);
     font-size: 0.78rem;
     letter-spacing: 0.15em;
     color: var(--cream);
     opacity:0;
-    animation: fadeUp 1.2s ease-out forwards, pulseHint 2.6s ease-in-out infinite 4.5s;
+    animation: hintFadeUp 1.2s ease-out forwards, pulseHint 2.6s ease-in-out infinite 4.5s;
     animation-delay: 4s;
     text-align:center;
     padding: 0 20px;
@@ -239,6 +240,11 @@
   @keyframes fadeUp{
     from{ opacity:0; transform: translateY(10px); }
     to{ opacity:0.85; transform: translateY(0); }
+  }
+
+  @keyframes hintFadeUp{
+    from{ opacity:0; transform: translate(-50%, 10px); }
+    to{ opacity:0.85; transform: translate(-50%, 0); }
   }
 
   @keyframes pulseHint{
