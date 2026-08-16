@@ -181,6 +181,10 @@
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
+  .content-inner{
+    transform: translateY(-9%);
+  }
+
   .name{
     font-family:'Cormorant Garamond', serif;
     font-weight:500;
@@ -204,9 +208,9 @@
   }
 
   .heartline{
-    margin-top: 18px;
-    font-size: clamp(0.68rem, 3.4vw, 0.85rem);
-    letter-spacing: 0.22em;
+    margin-top: 10px;
+    font-size: clamp(0.6rem, 3vw, 0.85rem);
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--gold);
     opacity:0;
@@ -295,8 +299,10 @@
 </div>
 
 <div class="content">
-  <h1 class="name" id="name" aria-label="Лера"></h1>
-  <p class="heartline">я тебя люблю</p>
+  <div class="content-inner">
+    <h1 class="name" id="name" aria-label="Лера"></h1>
+    <p class="heartline">я тебя люблю</p>
+  </div>
   <p class="hint">нажми в любом месте неба ✦</p>
 </div>
 
