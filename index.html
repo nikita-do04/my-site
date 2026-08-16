@@ -15,9 +15,9 @@
     --cream: #faf6f0;
     --plum: #5c2a4d;
   }
- 
+
   *{ margin:0; padding:0; box-sizing:border-box; }
- 
+
   html, body{
     width:100%;
     height:100%;
@@ -30,13 +30,13 @@
     font-family:'Jost', sans-serif;
     color: var(--cream);
   }
- 
+
   .sky{
     position:fixed;
     inset:0;
     overflow:hidden;
   }
- 
+
   /* ambient twinkling stars */
   .star{
     position:absolute;
@@ -45,12 +45,12 @@
     opacity:0.2;
     animation: twinkle linear infinite;
   }
- 
+
   @keyframes twinkle{
     0%, 100%{ opacity:0.15; }
     50%{ opacity:0.9; }
   }
- 
+
   /* drifting fireflies */
   .firefly{
     position:absolute;
@@ -62,14 +62,14 @@
     opacity:0;
     animation: drift linear infinite;
   }
- 
+
   @keyframes drift{
     0%{ transform: translateY(20px) translateX(0); opacity:0; }
     10%{ opacity:0.8; }
     90%{ opacity:0.6; }
     100%{ transform: translateY(-100vh) translateX(30px); opacity:0; }
   }
- 
+
   /* shooting stars */
   .shooting-star{
     position:fixed;
@@ -82,7 +82,7 @@
     opacity:0;
     z-index:2;
   }
- 
+
   .shooting-star::before{
     content:'';
     position:absolute;
@@ -93,14 +93,14 @@
     background: linear-gradient(to left, var(--cream), transparent);
     transform: translateY(-50%);
   }
- 
+
   @keyframes shoot{
     0%{ opacity:0; transform: translate(0,0); }
     5%{ opacity:1; }
     75%{ opacity:0.9; }
     100%{ opacity:0; transform: translate(var(--dx), var(--dy)); }
   }
- 
+
   /* soft breathing glow behind the constellation */
   .heart-glow{
     position:absolute;
@@ -116,11 +116,11 @@
     filter: blur(2px);
     pointer-events:none;
   }
- 
+
   @keyframes glowIn{
     to{ opacity:1; }
   }
- 
+
   @keyframes heartbeat{
     0%, 100%{ transform: translate(-50%,-50%) scale(1); }
     12%{ transform: translate(-50%,-50%) scale(1.07); }
@@ -128,7 +128,7 @@
     32%{ transform: translate(-50%,-50%) scale(1.05); }
     45%{ transform: translate(-50%,-50%) scale(1); }
   }
- 
+
   .constellation{
     position:absolute;
     top:50%;
@@ -138,7 +138,7 @@
     height:min(88vw, 70dvh, 620px);
     pointer-events:none;
   }
- 
+
   .constellation path{
     fill:none;
     stroke: var(--rose);
@@ -150,23 +150,23 @@
     animation: draw 4.5s ease-out forwards 0.6s,
                lineGlow 3.6s ease-in-out infinite 5.1s;
   }
- 
+
   @keyframes draw{
     to{ stroke-dashoffset:0; }
   }
- 
+
   @keyframes lineGlow{
     0%, 100%{ opacity:0.5; filter: drop-shadow(0 0 0px var(--rose)); }
     18%{ opacity:0.9; filter: drop-shadow(0 0 6px var(--rose)); }
     35%{ opacity:0.55; filter: drop-shadow(0 0 0px var(--rose)); }
   }
- 
+
   .constellation circle{
     fill: var(--gold);
     opacity:0;
     animation: pop 0.6s ease-out forwards;
   }
- 
+
   .content{
     position:relative;
     z-index:5;
@@ -180,7 +180,7 @@
     padding: 0 24px;
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
- 
+
   .name{
     font-family:'Cormorant Garamond', serif;
     font-weight:500;
@@ -188,28 +188,21 @@
     letter-spacing: 0.04em;
     display:flex;
     gap:0.02em;
-    background: linear-gradient(100deg,
-      var(--cream) 30%, var(--gold) 45%, var(--cream) 60%);
-    background-size: 300% 100%;
-    background-position: 100% 0;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    animation: shimmer 5s ease-in-out infinite 3.2s;
+    color: var(--cream);
+    animation: nameGlow 5s ease-in-out infinite 3.2s;
   }
- 
-  @keyframes shimmer{
-    0%, 55%, 100%{ background-position: 100% 0; }
-    75%{ background-position: 0% 0; }
+
+  @keyframes nameGlow{
+    0%, 55%, 100%{ color: var(--cream); text-shadow: 0 0 0 rgba(240,201,135,0); }
+    78%{ color: var(--gold); text-shadow: 0 0 22px rgba(240,201,135,0.55); }
   }
- 
+
   .name span{
     opacity:0;
     transform: translateY(14px);
     animation: letterIn 0.7s cubic-bezier(.2,.8,.2,1) forwards;
   }
- 
+
   .heartline{
     margin-top: 18px;
     font-size: clamp(0.68rem, 3.4vw, 0.85rem);
@@ -221,7 +214,7 @@
     animation: fadeUp 1.2s ease-out forwards;
     animation-delay: 2.4s;
   }
- 
+
   .hint{
     position:absolute;
     bottom: calc(28px + env(safe-area-inset-bottom, 0px));
@@ -236,30 +229,30 @@
     padding: 0 20px;
     width: 100%;
   }
- 
+
   @keyframes fadeUp{
     from{ opacity:0; transform: translateY(10px); }
     to{ opacity:0.85; transform: translateY(0); }
   }
- 
+
   @keyframes hintFadeUp{
     from{ opacity:0; transform: translate(-50%, 10px); }
     to{ opacity:0.85; transform: translate(-50%, 0); }
   }
- 
+
   @keyframes pulseHint{
     0%,100%{ opacity:0.4; }
     50%{ opacity:0.9; }
   }
- 
+
   @keyframes letterIn{
     to{ opacity:1; transform: translateY(0); }
   }
- 
+
   @keyframes pop{
     to{ opacity:1; }
   }
- 
+
   /* click-spawned hearts */
   .burst-heart{
     position:fixed;
@@ -269,13 +262,13 @@
     height:16px;
     animation: burst 1.6s ease-out forwards;
   }
- 
+
   @keyframes burst{
     0%{ transform: translate(-50%,-50%) scale(0.4); opacity:1; }
     70%{ opacity:0.9; }
     100%{ transform: translate(-50%,-160%) scale(1.1); opacity:0; }
   }
- 
+
   @media (prefers-reduced-motion: reduce){
     .star, .firefly, .constellation path, .constellation circle,
     .name, .name span, .heartline, .hint, .heart-glow, .shooting-star{
@@ -286,7 +279,7 @@
 </style>
 </head>
 <body>
- 
+
 <div class="sky" id="sky">
   <div class="heart-glow"></div>
   <svg class="constellation" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -300,13 +293,13 @@
     <circle cx="120" cy="35" r="1.8" style="animation-delay:1.2s"/>
   </svg>
 </div>
- 
+
 <div class="content">
   <h1 class="name" id="name" aria-label="Лера"></h1>
   <p class="heartline">я тебя люблю</p>
   <p class="hint">нажми в любом месте неба ✦</p>
 </div>
- 
+
 <script>
   // letter-by-letter name reveal
   const nameEl = document.getElementById('name');
@@ -317,7 +310,7 @@
     span.style.animationDelay = (0.3 + i * 0.14) + 's';
     nameEl.appendChild(span);
   });
- 
+
   // background stars
   const sky = document.getElementById('sky');
   const starCount = window.innerWidth < 600 ? 60 : 110;
@@ -333,7 +326,7 @@
     s.style.animationDelay = (Math.random() * 4) + 's';
     sky.appendChild(s);
   }
- 
+
   // fireflies
   const fireflyCount = window.innerWidth < 600 ? 10 : 18;
   for (let i = 0; i < fireflyCount; i++) {
@@ -344,10 +337,10 @@
     f.style.animationDelay = (Math.random() * 10) + 's';
     sky.appendChild(f);
   }
- 
+
   // occasional shooting stars streaking across the sky
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- 
+
   function spawnShootingStar(){
     const star = document.createElement('div');
     star.className = 'shooting-star';
@@ -364,7 +357,7 @@
     document.body.appendChild(star);
     setTimeout(() => star.remove(), duration * 1000 + 100);
   }
- 
+
   function scheduleShootingStars(){
     if (prefersReducedMotion) return;
     const delay = 5000 + Math.random() * 6000;
@@ -374,7 +367,7 @@
     }, delay);
   }
   scheduleShootingStars();
- 
+
   // click / tap heart burst
   function spawnHeart(x, y){
     const h = document.createElement('div');
@@ -388,12 +381,11 @@
     document.body.appendChild(h);
     setTimeout(() => h.remove(), 1700);
   }
- 
+
   window.addEventListener('pointerdown', (e) => {
     spawnHeart(e.clientX, e.clientY);
   });
 </script>
- 
+
 </body>
 </html>
- 
